@@ -25,8 +25,8 @@ data:extend({
         icon = "__biter-power__/graphics/incubator/icon.png",
         icon_size = 64,
         ingredients = {
-            {"stone-brick", 6},
-            {"copper-plate", 4}
+            {type="item", name="stone-brick", amount=6},
+            {type="item", name="copper-plate", amount=4},
         },
         enabled = false,
         result = "bp-incubator"

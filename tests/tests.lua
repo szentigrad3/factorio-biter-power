@@ -89,9 +89,9 @@ function module.initialize(event_handler)
 end
 
 function module.on_init()
-    global[data_key] = global[data_key] or data
-    data = global[data_key]
+    storage[data_key] = storage[data_key] or data
+    data = storage[data_key]
 end
-module.on_load = function() data = global[data_key] or data end
+module.on_load = function() data = storage[data_key] or data end
 
 return module

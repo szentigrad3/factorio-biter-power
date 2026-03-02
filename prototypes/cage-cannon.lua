@@ -23,9 +23,9 @@ data:extend {
         name = "bp-cage-cannon",
         energy_required = 10,
         ingredients = {
-            {"steel-plate", 8},
-            {"stone-brick", 5},
-            {"iron-gear-wheel", 10},
+            {type="item", name="steel-plate", amount=8},
+            {type="item", name="stone-brick", amount=5},
+            {type="item", name="iron-gear-wheel", amount=10},
         },
         enabled = false,
         result = "bp-cage-cannon",
@@ -40,8 +40,8 @@ data:extend {
         enabled = false,
         energy_required = 5,
         ingredients = {
-          {"bp-cage", 1},
-          {"explosives", 1}
+          {type="item", name="bp-cage", amount=1},
+          {type="item", name="explosives", amount=1},
         },
         result = "bp-cage-projectile",
         result_count = 1

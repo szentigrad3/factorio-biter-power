@@ -19,9 +19,9 @@ data:extend{
         energy_required = 10,
         ingredients =
         {
-          {"bp-cage", 1},
-          {"iron-gear-wheel", 20},
-          {"iron-stick", 5}
+          {type="item", name="bp-cage", amount=1},
+          {type="item", name="iron-gear-wheel", amount=20},
+          {type="item", name="iron-stick", amount=5},
         },
         result = "bp-cage-trap",
         result_count = 1

@@ -41,7 +41,7 @@ local function handle_picker_dollies(event)
             ---@diagnostic disable-next-line: undefined-field
             local entity = event.moved_entity
             if not entity or not entity.valid then return end
-            local escapable_data = global.escapables[entity.unit_number]
+            local escapable_data = storage.escapables[entity.unit_number]
             if not escapable_data then return end
             escapable_data.position = entity.position
         end)

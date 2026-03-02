@@ -13,14 +13,14 @@ local function add_nest(event)
     -- spawners it spawns on the edges of tiles.
     local halfify = function(value) return math.floor(value) + 0.5 end
     entity.teleport({halfify(entity.position.x), halfify(entity.position.y)})
-    table.insert(global.nests_to_clean, entity)
+    table.insert(storage.nests_to_clean, entity)
 end
 
 nests.on_nth_tick = {
     [60] = function (event)
         -- Nests that die leaves their corpse on top of the buried biter nest
         -- so we clean it up ourselves after a while
-        for _, nest in pairs(global.nests_to_clean) do
+        for _, nest in pairs(storage.nests_to_clean) do
             if nest.valid then 
                 for _, entity in pairs(nest.surface.find_entities_filtered{
                     type = "corpse",
@@ -31,13 +31,13 @@ nests.on_nth_tick = {
                 end
             end
         end
-        global.nests_to_clean = {}
+        storage.nests_to_clean = {}
     end,
 }
 
 function nests.on_init(event)
     ---@type LuaEntity[]
-    global.nests_to_clean = { }
+    storage.nests_to_clean = { }
 end
 
 nests.events = {
