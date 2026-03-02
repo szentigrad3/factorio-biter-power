@@ -15,8 +15,8 @@ data:extend({
         icon_size = 64,
         energy_required = 5,
         ingredients = {
-            {"steel-plate", 20},
-            {"copper-cable", 20},
+            {type="item", name="steel-plate", amount=20},
+            {type="item", name="copper-cable", amount=20},
         },
         enabled = false,
         result = "bp-cage"

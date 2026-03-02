@@ -19,9 +19,9 @@ data:extend({
         type = "recipe",
         name = "bp-egg-extractor",
         ingredients = {
-            {"steel-plate", 8},
-            {"stone-brick", 5},
-            {"iron-gear-wheel", 10},
+            {type="item", name="steel-plate", amount=8},
+            {type="item", name="stone-brick", amount=5},
+            {type="item", name="iron-gear-wheel", amount=10},
         },
         enabled = false,
         result = "bp-egg-extractor"
@@ -78,23 +78,14 @@ data:extend({
         energy_usage = "90kW",
         resource_searching_radius = 0.49,
         vector_to_place_result = {0, -1.85},
-        module_specification = nil,
-        monitor_visualization_tint = {r=78, g=173, b=255},    
-        circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points,
-        circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites,
-        circuit_wire_max_distance = default_circuit_wire_max_distance,
+        module_slots = 0,
+        monitor_visualization_tint = {r=78, g=173, b=255},
 
         graphics_set = {
-          drilling_vertical_movement_duration = 10 / electric_drill_animation_speed,
+          drilling_vertical_movement_duration = 10 / 0.5, -- electric_drill_animation_speed from base game
           animation_progress = 1,
           min_animation_progress = 0,
           max_animation_progress = 30,
-    
-          status_colors = electric_mining_drill_status_colors(),
-    
-          circuit_connector_layer = "object",
-          circuit_connector_secondary_draw_order = { north = 14, east = 30, south = 30, west = 30 },
-    
 
           working_visualisations =
           {

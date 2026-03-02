@@ -195,14 +195,14 @@ local function update_escapable_derivates(entity, biters_in_machine)
     end
 
     -- We need to prevent destruction of this entity to release biters
-    global.ignore_build_destroy_events_for = entity.unit_number
+    storage.ignore_build_destroy_events_for = entity.unit_number
     entity.destroy { raise_destroy = true }
-    global.ignore_build_destroy_events = nil
+    storage.ignore_build_destroy_events = nil
 
     for _, player in pairs(gui_was_open) do player.opened = new_entity end
 
     -- Keep track of new entry
-    global.escapables[new_entity.unit_number] = create_escapable_data(new_entity)
+    storage.escapables[new_entity.unit_number] = create_escapable_data(new_entity)
 
     return new_entity
 end
@@ -276,8 +276,8 @@ end
 
 ---@param event NthTickEventData
 local function update(event)
-    global.iterate_escapables = lib.table.for_n_of(
-        global.escapables, global.iterate_escapables, 
+    storage.iterate_escapables = lib.table.for_n_of(
+        storage.escapables, storage.iterate_escapables, 
         5, -- Machines to update per second
         tick_escape_for_entity)
 end
@@ -285,10 +285,10 @@ end
 local function on_constructed(event)
     local entity = event.created_entity or event.entity or event.destination
     if not entity or not entity.valid then return end
-    if global.ignore_build_destroy_events == entity.unit_number then return end
+    if storage.ignore_build_destroy_events == entity.unit_number then return end
 
     if escapables.machines[entity.name] then 
-        global.escapables[entity.unit_number] = create_escapable_data(entity)
+        storage.escapables[entity.unit_number] = create_escapable_data(entity)
         return
     end
 
@@ -311,7 +311,7 @@ end
 local function on_deconstructed(event)
     local entity = event.entity
     if not entity or not entity.valid then return end
-    if global.ignore_build_destroy_events == entity.unit_number then return end
+    if storage.ignore_build_destroy_events == entity.unit_number then return end
     if not escapables.machines[entity.name] then return end
 
     -- If this is a die event then the biters should escape!
@@ -320,7 +320,7 @@ local function on_deconstructed(event)
         escape_biters_from_entity(entity, get_biters_in_machine(entity))
     end
 
-    global.escapables[entity.unit_number] = nil
+    storage.escapables[entity.unit_number] = nil
 end
 
 
@@ -328,7 +328,7 @@ local function sanitize_escapables()
     -- Sanitize the escapable derivatives, because a mod might be removed which had a biter running
     -- Removing the mod should remove the items, not the machines.
     local entries_to_delete = { }
-    for unit_number, entry in pairs(global.escapables) do
+    for unit_number, entry in pairs(storage.escapables) do
         if not entry.entity.valid then
             table.insert(entries_to_delete, unit_number)
 
@@ -365,7 +365,7 @@ local function sanitize_escapables()
     end
 
     for _, unit_number in pairs(entries_to_delete) do
-        global.escapables[unit_number] = nil
+        storage.escapables[unit_number] = nil
     end
 end
 
@@ -386,7 +386,7 @@ escapables.events = {
 
 function escapables.on_init(event)
     ---@type table<uint, Escapable>
-    global.escapables = { }
+    storage.escapables = { }
 end
 
 function escapables.on_configuration_changed(event)

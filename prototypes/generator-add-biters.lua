@@ -6,15 +6,17 @@ local lib = require("lib.lib")
 
 local function get_biter_run_animation(biter)
     local layers = util.table.deepcopy(biter.run_animation.layers)
-    local has_hr = layers[1].hr_version ~= nil
+    local has_hr = layers[1] and layers[1].hr_version ~= nil
 
     -- These animations are for all for directions. Extract only
     -- the one that runs to the right, which is number 2
     local index = 2
     for _, layer in pairs(layers) do
-        layer.filename = layer.filenames[index]
+        if layer.filenames then
+            layer.filename = layer.filenames[index]
+        end
 
-        if has_hr then 
+        if has_hr and layer.hr_version and layer.hr_version.filenames then
             layer.hr_version.filename = layer.hr_version.filenames[index]
         end
 
@@ -25,7 +27,7 @@ local function get_biter_run_animation(biter)
             "slice",
         } do
             layer[field] = nil
-            if has_hr then layer.hr_version[field] = nil end
+            if has_hr and layer.hr_version then layer.hr_version[field] = nil end
         end
     end
 
@@ -46,11 +48,13 @@ local function get_biter_run_animation(biter)
 
     -- Make shadow slightly opague
     local tint = {r=0,g=0,b=0,a=0.5}
-    shadow_layer.tint = tint
-    shadow_layer.draw_as_shadow = nil
-    if has_hr then
-        shadow_layer.hr_version.tint = tint
-        shadow_layer.hr_version.draw_as_shadow = nil
+    if shadow_layer then
+        shadow_layer.tint = tint
+        shadow_layer.draw_as_shadow = nil
+        if has_hr and shadow_layer.hr_version then
+            shadow_layer.hr_version.tint = tint
+            shadow_layer.hr_version.draw_as_shadow = nil
+        end
     end
 
     return layers

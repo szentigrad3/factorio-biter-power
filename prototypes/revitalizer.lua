@@ -166,9 +166,9 @@ data:extend({
         icon = "__biter-power__/graphics/revitalizer/icon.png",
         icon_size = 64, icon_mipmaps = 4,
         ingredients = {
-            {"steel-plate", 30},
-            {"electronic-circuit", 10},
-            {"copper-plate", 5},
+            {type="item", name="steel-plate", amount=30},
+            {type="item", name="electronic-circuit", amount=10},
+            {type="item", name="copper-plate", amount=5},
         },
         enabled = false,
         result = "bp-revitalizer"
@@ -290,7 +290,7 @@ for biter_name, biter_config in pairs(config.biter.types) do
         subgroup = "revitalization-tier-"..biter_config.tier,
         category =  "revitalization-tier-"..biter_config.tier,
         order = "c[revitilization]-["..data.raw.unit[biter_name].order:sub(-1).."]-["..biter_name.."]",
-        ingredients = {{"bp-tired-caged-"..biter_name, 1}},
+        ingredients = {{type="item", name="bp-tired-caged-"..biter_name, amount=1}},
         energy_required = config.revitalization.time * biter_config.density_modifier,
         results = util.table.deepcopy(config.revitalization.results(biter_config.tier)),
         enabled = false, -- Now needs to be unlocked by tech

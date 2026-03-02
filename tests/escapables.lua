@@ -56,7 +56,7 @@ test_suite.create_test(suite, "get-biters-in-inventory-generator-burning", {
         }
         test_util.assert_valid_entity(generator)
 
-        generator.burner.currently_burning = game.item_prototypes["bp-caged-big-biter"]
+        generator.burner.currently_burning = prototypes.item["bp-caged-big-biter"]
         generator.burner.remaining_burning_fuel = 100
 
         local biters = script.get_biters_in_machine(generator)
@@ -76,7 +76,7 @@ test_suite.create_test(suite, "get-biters-in-inventory-generator-burning-zero", 
         }
         test_util.assert_valid_entity(generator)
 
-        generator.burner.currently_burning = game.item_prototypes["bp-caged-big-biter"]
+        generator.burner.currently_burning = prototypes.item["bp-caged-big-biter"]
         generator.burner.remaining_burning_fuel = 0
 
         local biters = script.get_biters_in_machine(generator)
@@ -119,7 +119,7 @@ test_suite.create_test(suite, "get-biters-in-inventory-generator-input-burning-o
         local inventory = generator.burner.inventory
         inventory.insert{name="bp-caged-small-biter"}
 
-        generator.burner.currently_burning = game.item_prototypes["bp-caged-big-biter"]
+        generator.burner.currently_burning = prototypes.item["bp-caged-big-biter"]
         generator.burner.remaining_burning_fuel = 100
 
         local inventory = generator.burner.burnt_result_inventory
