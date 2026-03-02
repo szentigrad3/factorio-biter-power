@@ -16,7 +16,6 @@ reinforced_generator.minable.result = "bp-generator-reinforced"
 reinforced_generator.placeable_by.item = "bp-generator-reinforced"
 reinforced_generator.next_upgrade = nil
 reinforced_generator.fast_replaceable_group = "bp-generators"
-reinforced_generator.burner.fuel_category = nil
 reinforced_generator.burner.fuel_categories = {"bp-biter-power", "bp-biter-power-advanced"}
 
 -- Update graphics
