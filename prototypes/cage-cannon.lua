@@ -212,7 +212,9 @@ data:extend{
                 height = 136,
                 line_length = 4,
                 lines_per_file = 4,
-                direction_count = 256,
+                -- Note: Factorio 2.0 base only ships shadow files 1-15 (15*4*4=240 frames),
+                -- so both layers must use the same direction_count of 240.
+                direction_count = 240,
                 scale = cannon_scale,
                 shift =  util.add_shift(util.mul_shift(util.by_pixel(0, -40), cannon_scale), cannon_shift),
                 stripes = create_stripes{
@@ -230,8 +232,7 @@ data:extend{
                     "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-12.png",
                     "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-13.png",
                     "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-14.png",
-                    "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-15.png",
-                    "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png"
+                    "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-15.png"
                 }
             },
             {

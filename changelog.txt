@@ -3,6 +3,7 @@ Version: 0.6.1
 Date: ??
   Bugfixes:
     - Fix mod failing to load due to missing artillery-wagon-cannon-base-shadow-16.png in Factorio 2.0.
+    - Fix "Invalid StripeIterator" error when loading bp-cage-cannon entity by aligning cannon base animation direction_count to 240 to match the shadow layer.
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.0
