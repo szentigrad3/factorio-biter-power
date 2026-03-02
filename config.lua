@@ -97,6 +97,7 @@ config.buried_nest.results = {
     -- Each unit in the resource will result in one egg. This means
     -- the results can't average more than one egg.
     {
+        type = "item",
         name = "bp-biter-egg",
         amount_min = 1,
         amount_max = 1,
