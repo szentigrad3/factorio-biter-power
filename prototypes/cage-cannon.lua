@@ -258,7 +258,7 @@ data:extend{
             base_visualisation = {
                 animation = { layers = {
                     {
-                        filename = "__base__/graphics/entity/gun-turret/hr-gun-turret-base.png",
+                        filename = "__base__/graphics/entity/gun-turret/gun-turret-base.png",
                         priority = "high",
                         width = 150,
                         height = 118,
