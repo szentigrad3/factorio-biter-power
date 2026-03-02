@@ -102,7 +102,7 @@ local function create_variant(base_name, biter_name)
     generator.localised_name = {"entity-name."..base_name}
     generator.localised_description = {"",
         {"entity-description.bp-generator"},
-        {"bp-text.escape-modifier", containment_modifier},
+        {"bp-text.escape-modifier", tostring(containment_modifier)},
         {"bp-text.inhabitant", biter.localised_name or {"entity-name."..biter.name}},
         {"bp-text.expected-containment", lib.formattime(biter_config.escape_period * containment_modifier)},
     }

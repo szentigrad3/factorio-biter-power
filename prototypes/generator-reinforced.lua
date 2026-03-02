@@ -8,7 +8,7 @@ local reinforced_generator = util.table.deepcopy(generator)
 reinforced_generator.name = "bp-generator-reinforced"
 reinforced_generator.localised_description = {"",
   {"entity-description.bp-generator"},
-  {"bp-text.escape-modifier", config.escapes.escapable_machine["bp-generator-reinforced"]},
+  {"bp-text.escape-modifier", tostring(config.escapes.escapable_machine["bp-generator-reinforced"])},
 }
 reinforced_generator.icon = "__biter-power__/graphics/generator/reinforced-icon.png"
 reinforced_generator.max_power_output = util.format_number(config.generator.power_output * config.generator.reinforced_multiplyer, true).."W"

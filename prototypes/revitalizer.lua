@@ -178,7 +178,7 @@ data:extend({
         name = "bp-revitalizer",
         localised_description = {"",
             {"entity-description.bp-revitalizer"},
-            {"bp-text.escape-modifier", config.escapes.escapable_machine["bp-revitalizer"]},
+            {"bp-text.escape-modifier", tostring(config.escapes.escapable_machine["bp-revitalizer"])},
         },
         icon = "__biter-power__/graphics/revitalizer/icon.png",
         icon_size = 64, icon_mipmaps = 4,
